@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DDLX" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DDLX>
+    <METADATA>
+     <NAME>Z_C_PURCHASEDOCBUDGETOVP</NAME>
+     <VERSION>active</VERSION>
+     <DESCRIPTION>Metadata extensions for Budget Overview</DESCRIPTION>
+     <MASTER_LANGUAGE>EN</MASTER_LANGUAGE>
+    </METADATA>
+    <CONTENT>
+     <SOURCE>@Metadata.layer: #CORE
+annotate view Z_C_PurchaseDocBudgetOVP with
+{
+  @EndUserText.label: &apos;Purchasing Document&apos;
+  @UI: {
+     selectionField: [{position: 10}],
+      lineItem: [{
+      position: 10,
+      type: #FOR_INTENT_BASED_NAVIGATION, 
+      semanticObjectAction: &apos;manage&apos;}]
+  }
+  PurchaseDocument;
+  @UI: {
+  lineItem:[{
+   type: #AS_DATAPOINT,
+   importance: #HIGH,
+   position: 20
+  }],
+  dataPoint: {
+   title: &apos;Created On&apos;
+  }
+  }
+
+  crea_date_time;
+  @UI.lineItem: [{position: 20}]
+  PurchasingOrganization;
+  @UI: {
+  lineItem: [{
+  type: #AS_DATAPOINT,
+  importance: #HIGH,
+  position: 10
+  }],
+  dataPoint: {
+  title: &apos;Overall Price&apos;,
+  valueFormat.numberOfFractionalDigits: 2,
+  minimumValue: 0,
+  maximumValue: 100,
+  criticalityCalculation: {
+      improvementDirection: #MINIMIZE,
+      toleranceRangeHighValue: 80,
+      deviationRangeHighValue: 100      
+  }
+  }
+  }
+  BudgetUtilization;
+}</SOURCE>
+    </CONTENT>
+   </DDLX>
+  </asx:values>
+ </asx:abap>
+</abapGit>

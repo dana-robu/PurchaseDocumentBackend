@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DDLX" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DDLX>
+    <METADATA>
+     <NAME>Z_C_PURCHASEDOCUMENTLRP</NAME>
+     <VERSION>active</VERSION>
+     <DESCRIPTION>Purchase Document</DESCRIPTION>
+     <MASTER_LANGUAGE>EN</MASTER_LANGUAGE>
+    </METADATA>
+    <CONTENT>
+     <SOURCE>@Metadata.layer: #CORE
+
+@UI: {
+    headerInfo: {
+        description: {
+            value: &apos;Description&apos;,
+            type: #STANDARD
+        },
+        title: {
+            value: &apos;PurchaseDocument&apos;,
+            type: #STANDARD
+        },
+        typeName: &apos;Purchase Document&apos;,
+        typeNamePlural: &apos;Purchase Documents&apos;,
+        imageUrl: &apos;PurchaseDocumentImageURL&apos;
+    }
+}
+
+annotate view Z_C_PurchaseDocumentLrp with
+{
+
+  @UI.lineItem: [
+  { position: 10, importance: #HIGH }
+  ]
+  PurchaseDocumentImageURL;
+
+  @UI: {
+    lineItem: [{ importance: #HIGH, position: 20 },
+     { type: #FOR_ACTION, dataAction: &apos;BOPF:APPROVE&apos;, label: &apos;Approve&apos;, position: 1  },
+     { type: #FOR_ACTION, dataAction: &apos;BOPF:CLOSE&apos;, label: &apos;Close&apos;, position: 2  }],
+    selectionField: [{ position: 10 }],
+    identification: [
+    { type: #FOR_ACTION, dataAction: &apos;BOPF:APPROVE&apos;, importance: #HIGH, label: &apos;Approve&apos; },
+    { type: #FOR_ACTION, dataAction: &apos;BOPF:CLOSE&apos;, importance: #HIGH, label: &apos;Close&apos; }],
+    facet: [
+         {
+           id:         &apos;StatusDataPointFacet&apos;,
+           purpose:    #HEADER,
+           type:       #DATAPOINT_REFERENCE,
+           targetQualifier: &apos;Status&apos;
+          },
+         {
+           id:         &apos;OverallPriceDataPointFacet&apos;,
+           purpose:    #HEADER,
+           type:       #DATAPOINT_REFERENCE,
+           targetQualifier: &apos;OverallPrice&apos;
+          },
+         {
+           id:         &apos;ApprovalRequiredDataPointFacet&apos;,
+           purpose:    #HEADER,
+           type:       #DATAPOINT_REFERENCE,
+           targetQualifier: &apos;IsApprovalRequired&apos;
+          },
+         {
+           id:         &apos;PriorityDataPointFacet&apos;,
+           purpose:    #HEADER,
+           type:       #DATAPOINT_REFERENCE,
+           targetQualifier: &apos;Priority&apos;
+          },
+
+       {
+          label: &apos;Purchase Document&apos;,
+          type: #COLLECTION,
+          id: &apos;PurchaseDocumentCollectionFacet&apos;,
+          purpose: #STANDARD
+        },
+        // Basic Data Section
+          {
+            label: &apos;Basic Data&apos;,
+            type: #FIELDGROUP_REFERENCE,
+            id: &apos;BasicDataFieldGroupReferenceFacet&apos;,
+            parentId: &apos;PurchaseDocumentCollectionFacet&apos;,
+            purpose: #STANDARD,
+            targetQualifier: &apos;BasicDataFieldGroup&apos;
+          },
+           // Purchasing Data Section
+        {
+          label: &apos;Purchasing Data&apos;,
+          type: #FIELDGROUP_REFERENCE,
+          id: &apos;PurchasingDocumentFieldGroupReferenceFacet&apos;,
+          parentId: &apos;PurchaseDocumentCollectionFacet&apos;,
+          purpose: #STANDARD,
+          targetQualifier: &apos;PurchasingDocumentFieldGroup&apos;
+        },
+        // Items Section
+        {
+          label: &apos;Purchase Document Items&apos;,
+          type: #LINEITEM_REFERENCE,
+          id: &apos;PurchaseDocumentItemsLineItemReferenceFacet&apos;,
+          purpose: #STANDARD,
+          targetElement: &apos;_PurchaseDocumentItem&apos;
+        }
+     ],
+     fieldGroup: [{ qualifier: &apos;PurchasingDocumentFieldGroup&apos;, position: 10, importance: #HIGH }]
+  }
+  PurchaseDocument;
+  @UI: {
+    fieldGroup: [{ qualifier: &apos;PurchasingDocumentFieldGroup&apos;, position: 20, importance: #HIGH }]
+  }
+  Description;
+  @UI: {
+  lineItem: [{ position: 30, importance: #HIGH }],
+  fieldGroup: [{ qualifier: &apos;PurchasingDocumentFieldGroup&apos;, position: 30, importance: #HIGH  }],
+  dataPoint: { title: &apos;Prioity&apos; },
+  selectionField: [{ position: 20 }],
+  textArrangement: #TEXT_ONLY
+  }
+  Priority;
+
+  @UI: {
+    lineItem: [{ importance: #HIGH, position: 40, criticality: &apos;OverallPriceCriticality&apos;, criticalityRepresentation: #WITHOUT_ICON, value: &apos;OverallPrice&apos;  }],
+    dataPoint: { title: &apos;Overall Price&apos;, criticality: &apos;OverallPriceCriticality&apos; }
+  }
+  OverallPrice;
+
+  @UI.hidden: true
+  OverallPriceCriticality;
+
+  @UI: {
+    lineItem: [{ importance: #MEDIUM, position: 50 }],
+    fieldGroup: [{ qualifier: &apos;PurchasingDocumentFieldGroup&apos;, position: 40, importance: #HIGH  }],
+     dataPoint: { title: &apos;Status&apos;  },
+     selectionField: [{ position: 30 }],
+     textArrangement: #TEXT_ONLY
+  }
+  Status;
+
+  @UI: {
+  lineItem: [{ importance: #MEDIUM, position: 60, type: #AS_CONTACT, value: &apos;_PurchasingOrganization&apos;, label: &apos;Purchasing Organization&apos; }],
+  fieldGroup: [{ qualifier: &apos;PurchasingDocumentFieldGroup&apos;, position: 40, importance: #HIGH  }],
+  selectionField: [{ position: 40 }]
+  }
+  PurchasingOrganization;
+
+
+  @UI:  {
+    lineItem: [{ importance: #HIGH, position: 70, criticality: &apos;OverallPriceCriticality&apos;, criticalityRepresentation: #WITH_ICON, value: &apos;IsApprovalRequired&apos; }],
+    textArrangement: #TEXT_ONLY,
+    dataPoint: { title: &apos;Is Approval Required&apos;, criticality: &apos;OverallPriceCriticality&apos; } }
+  IsApprovalRequired;
+
+
+  @UI: {
+    lineItem: [{ importance: #MEDIUM, position: 80 }],
+    fieldGroup: [{ qualifier: &apos;BasicDataFieldGroup&apos;, position: 10, importance: #HIGH }]   
+    }
+  crea_date_time;
+
+  @UI: {
+    lineItem: [{ importance: #MEDIUM, position:90 }],
+    fieldGroup: [{ qualifier: &apos;BasicDataFieldGroup&apos;, position: 20, importance: #HIGH }]
+    }
+  crea_uname;
+  @UI: {
+  lineItem: [{ importance: #MEDIUM, position: 100 }],
+  fieldGroup: [{ qualifier: &apos;BasicDataFieldGroup&apos;, position: 30, importance: #HIGH }]
+  }
+  lchg_date_time;
+
+  @UI: {
+  lineItem: [{ importance: #MEDIUM, position: 110 }],
+  fieldGroup: [{ qualifier: &apos;BasicDataFieldGroup&apos;, position: 40, importance: #HIGH }]
+  }
+  lchg_uname;
+
+
+
+
+}</SOURCE>
+    </CONTENT>
+   </DDLX>
+  </asx:values>
+ </asx:abap>
+</abapGit>

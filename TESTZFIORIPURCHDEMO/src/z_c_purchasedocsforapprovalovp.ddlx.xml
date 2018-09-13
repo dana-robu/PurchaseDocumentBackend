@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DDLX" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DDLX>
+    <METADATA>
+     <NAME>Z_C_PURCHASEDOCSFORAPPROVALOVP</NAME>
+     <VERSION>active</VERSION>
+     <DESCRIPTION>Metadata extensions for Pending Purchase Documents</DESCRIPTION>
+     <MASTER_LANGUAGE>EN</MASTER_LANGUAGE>
+    </METADATA>
+    <CONTENT>
+     <SOURCE>@Metadata.layer: #CORE
+annotate view Z_C_PurchaseDocsforApprovalOVP with
+{
+  @UI.lineItem: [{
+      position: 10,
+      importance: #HIGH,
+      label: &apos;Document&apos;,
+      type: #FOR_INTENT_BASED_NAVIGATION, 
+      semanticObjectAction: &apos;manage&apos;
+    }]
+  PurchaseDocument;
+
+
+  @UI.lineItem: [{
+    position: 20,
+    importance: #HIGH,
+    label: &apos;Description&apos;
+  }]
+  Description;
+
+
+  @UI.lineItem: [{
+    position: 30,
+    importance: #HIGH,
+    label: &apos;Total Price&apos;
+  }]
+  PriorityText;
+
+
+  @UI.lineItem: [{
+     position: 40,
+     importance: #HIGH,
+     label: &apos;Quantity&apos;
+      }]
+  crea_uname;
+
+  @UI.lineItem: [{
+    position: 50,
+    importance: #HIGH,
+    label: &apos;Total Price&apos;
+  }]
+  OverallPrice;
+
+
+  @UI.lineItem: [{
+     position: 60,
+     importance: #HIGH,
+     label: &apos;Quantity&apos;
+      }]
+  Approval;
+
+}</SOURCE>
+    </CONTENT>
+   </DDLX>
+  </asx:values>
+ </asx:abap>
+</abapGit>

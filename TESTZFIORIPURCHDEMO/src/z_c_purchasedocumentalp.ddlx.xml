@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DDLX" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DDLX>
+    <METADATA>
+     <NAME>Z_C_PURCHASEDOCUMENTALP</NAME>
+     <VERSION>active</VERSION>
+     <DESCRIPTION>Purchase Document ALP  Metadata Extension</DESCRIPTION>
+     <MASTER_LANGUAGE>EN</MASTER_LANGUAGE>
+    </METADATA>
+    <CONTENT>
+     <SOURCE>@Metadata.layer: #CORE
+@UI.selectionPresentationVariant: [
+ //For KPIs
+    {
+        qualifier:                      &apos;KPIDocumentsByOverallItemPrice&apos;,
+        presentationVariantQualifier:   &apos;KPIDocumentsByOverallItemPrice&apos;,
+        selectionVariantQualifier:      &apos;KPIDocumentsByOverallItemPrice&apos;
+    },
+    {
+        qualifier:                      &apos;KPIDocumentsByQuantity&apos;,
+        presentationVariantQualifier:   &apos;KPIDocumentsByQuantity&apos;,
+        selectionVariantQualifier:      &apos;KPIDocumentsByQuantity&apos;
+    },
+ //For default chart and Table
+    {
+        qualifier:                      &apos;Default&apos;,
+        presentationVariantQualifier:   &apos;Default&apos;,
+        selectionVariantQualifier:      &apos;Default&apos;
+    },
+ //For Visual Filters
+    {
+        qualifier:                      &apos;FilterByItemPrice&apos;,
+        presentationVariantQualifier:   &apos;FilterByItemPrice&apos;,
+        selectionVariantQualifier:      &apos;FilterByItemPrice&apos;
+    },
+    {
+        qualifier:                      &apos;FilterByPriority&apos;,
+        presentationVariantQualifier:   &apos;FilterByPriority&apos;,
+        selectionVariantQualifier:      &apos;FilterByPriority&apos;
+    },
+    {
+        qualifier:                      &apos;FilterByVendor&apos;,
+        presentationVariantQualifier:   &apos;FilterByVendor&apos;,
+        selectionVariantQualifier:      &apos;FilterByVendor&apos;
+    },
+    {
+        qualifier:                      &apos;FilterByVendorType&apos;,
+        presentationVariantQualifier:   &apos;FilterByVendorType&apos;,
+        selectionVariantQualifier:      &apos;FilterByVendorType&apos;
+    },
+    {
+        qualifier:                      &apos;FilterByPurchasingOrganization&apos;,
+        presentationVariantQualifier:   &apos;FilterByPurchasingOrganization&apos;,
+        selectionVariantQualifier:      &apos;FilterByPurchasingOrganization&apos;
+    }
+]
+
+@UI.selectionVariant: [
+ //For KPIs
+    {
+        qualifier:      &apos;KPIDocumentsByOverallItemPrice&apos;,
+        text:           &apos;KPI Documents By Overall Price&apos;
+    },
+    {
+        qualifier:      &apos;KPIDocumentsByQuantity&apos;,
+        text:           &apos;KPI Documents By Quantity&apos;
+    },
+ //For default chart and Table
+    {
+        qualifier:      &apos;Default&apos;,
+        text:           &apos;Default&apos;
+    },
+ //For Visual Filters
+    {
+        qualifier:          &apos;FilterByItemPrice&apos;,
+        text:               &apos;Documents By Item Price&apos;
+    },
+    {
+        qualifier:          &apos;FilterByPriority&apos;,
+        text:               &apos;Documents By Priority&apos;
+    },
+    {
+        qualifier:          &apos;FilterByVendor&apos;,
+        text:               &apos;Documents By Vendor&apos;
+    },
+    {
+        qualifier:          &apos;FilterByVendorType&apos;,
+        text:               &apos;Documents By VendorType&apos;
+    },
+    {
+        qualifier:          &apos;FilterByPurchasingOrganization&apos;,
+        text:               &apos;Documents By Purchase Org&apos;
+    }
+]
+
+@UI.presentationVariant: [
+ //For KPIs
+    {
+        qualifier:          &apos;KPIDocumentsByOverallItemPrice&apos;,
+        text:               &apos;Number of Documents per OverallItemPrice&apos;,
+        visualizations:     [{ type: #AS_CHART, qualifier: &apos;ChartDocumentsByOverallItemPrice&apos;},
+                             { type: #AS_DATAPOINT, qualifier: &apos;OverallItemPrice&apos;}]
+    },
+    {
+        qualifier:          &apos;KPIDocumentsByQuantity&apos;,
+        text:               &apos;Number of Documents per Quantity&apos;,
+        visualizations:     [{ type: #AS_CHART, qualifier: &apos;ChartDocumentsByQuantity&apos;},
+                             { type: #AS_DATAPOINT, qualifier: &apos;Quantity&apos;}]
+    },
+//For default chart and Table
+    {
+    qualifier:              &apos;Default&apos;,
+    sortOrder:      [{ by: &apos;PurchaseDocument&apos;, direction: #ASC }],
+    groupBy:        [ &apos;PurchaseDocument&apos;,&apos;PurchaseDocumentItem&apos;],
+    visualizations:         [{ type: #AS_CHART, qualifier: &apos;ChartDefault&apos;},
+                             { type: #AS_LINEITEM, qualifier: &apos;Default&apos; }]
+    },
+//For Visual Filters
+    {
+        qualifier:          &apos;FilterByItemPrice&apos;,
+        text:               &apos;Documents By Item Price&apos;,
+        visualizations:     [{ type: #AS_CHART, qualifier: &apos;ChartDocumentsByItemPrice&apos;},
+                             { type: #AS_DATAPOINT, qualifier: &apos;Price&apos;}]
+    },
+    {
+        qualifier:          &apos;FilterByPriority&apos;,
+        text:               &apos;Documents By Priority&apos;,
+        visualizations:     [{ type: #AS_CHART, qualifier: &apos;ChartDocumentsByPriority&apos;},
+                             { type: #AS_DATAPOINT, qualifier: &apos;TotalNumberofDocuments&apos;}]
+    },
+    {
+        qualifier:          &apos;FilterByVendor&apos;,
+        text:               &apos;Documents By Vendor&apos;,
+        visualizations:     [{ type: #AS_CHART, qualifier: &apos;ChartVendorsPerItem&apos;}]
+    },
+    {
+        qualifier:          &apos;FilterByVendorType&apos;,
+        text:               &apos;Documents By VendorType&apos;,
+        visualizations:     [{ type: #AS_CHART, qualifier: &apos;ChartVendorTypesPerItem&apos;}]
+    },
+    {
+        qualifier:          &apos;FilterByPurchasingOrganization&apos;,
+        text:               &apos;Documents By Purchase Org&apos;,
+        visualizations:     [{ type: #AS_CHART, qualifier: &apos;ChartPurchaseOrg&apos;}]
+    }
+
+]
+
+
+@UI.chart: [
+ //For KPIs
+    {
+        qualifier:              &apos;ChartDocumentsByOverallItemPrice&apos;,
+        chartType:              #COLUMN,
+        dimensions:             [&apos;PurchaseDocument&apos;],
+        measures:               [ &apos;OverallItemPrice&apos; ],
+        dimensionAttributes:    [{ dimension: &apos;PurchaseDocument&apos;, role: #CATEGORY}],
+        measureAttributes:      [{ measure: &apos;OverallItemPrice&apos;, role: #AXIS_1}]
+    },
+    {
+        qualifier:              &apos;ChartDocumentsByQuantity&apos;,
+        chartType:              #DONUT,
+        dimensions:             [ &apos;PurchaseDocument&apos;],
+        measures:               [ &apos;Quantity&apos; ],
+        dimensionAttributes:    [{ dimension: &apos;PurchaseDocument&apos;, role: #CATEGORY}],
+        measureAttributes:      [{ measure: &apos;Quantity&apos;, role: #AXIS_1}]
+    },
+//For default chart and Table
+    {
+        qualifier:              &apos;ChartDefault&apos;,
+        title:                  &apos;Costs by PurchaseDoc / Items&apos;,
+        description:            &apos;Costs by PurchaseDoc / Items&apos;,
+        chartType:              #COLUMN,
+        dimensions:             [ &apos;PurchaseDocument&apos;,&apos;PurchaseDocumentItem&apos;,&apos;VendorType&apos;,&apos;Vendor&apos; ],
+        measures:               [ &apos;Quantity&apos;],
+        dimensionAttributes:    [{ dimension: &apos;PurchaseDocument&apos;, role: #SERIES},
+                                 { dimension: &apos;PurchaseDocumentItem&apos;, role: #CATEGORY},
+                                 { dimension: &apos;VendorType&apos;, role: #CATEGORY},
+                                 { dimension: &apos;Vendor&apos;, role: #CATEGORY}],
+        measureAttributes:      [{ measure: &apos;Quantity&apos;, role: #AXIS_1}]
+    },
+ //For Visual Filters
+    {
+        qualifier:              &apos;ChartDocumentsByItemPrice&apos;,
+        chartType:              #LINE,
+        dimensions:             [ &apos;PurchaseDocument&apos;],
+        measures:               [ &apos;OverallItemPrice&apos; ],
+        dimensionAttributes:    [{ dimension: &apos;PurchaseDocument&apos;, role: #CATEGORY}],
+        measureAttributes:      [{ measure: &apos;OverallItemPrice&apos;, role: #AXIS_1}]
+    },
+    {
+        qualifier:              &apos;ChartDocumentsByPriority&apos;,
+        chartType:              #BAR,
+        dimensions:             [ &apos;Priority&apos;],
+        measures:               [ &apos;NumberOfDocuments&apos; ],
+        dimensionAttributes:    [{ dimension: &apos;Priority&apos;, role: #CATEGORY}],
+        measureAttributes:      [{ measure: &apos;NumberOfDocuments&apos;, role: #AXIS_1}]
+    },
+    {
+        qualifier:              &apos;ChartVendorsPerItem&apos;,
+        chartType:              #DONUT,
+        dimensions:             [&apos;Vendor&apos;],
+        dimensionAttributes:    [{ dimension: &apos;Vendor&apos;, role: #CATEGORY }],
+        measures:               [&apos;NumberOfDocuments&apos;],
+        measureAttributes:      [{ measure: &apos;NumberOfDocuments&apos;, role: #AXIS_1 }]
+    },
+     {
+        qualifier:              &apos;ChartVendorTypesPerItem&apos;,
+        chartType:              #BAR,
+        dimensions:             [&apos;VendorType&apos;],
+        dimensionAttributes:    [{ dimension: &apos;VendorType&apos;, role: #CATEGORY }],
+        measures:               [&apos;NumberOfDocuments&apos;],
+        measureAttributes:      [{ measure: &apos;NumberOfDocuments&apos;, role: #AXIS_1 }]
+    },
+    {
+        qualifier:              &apos;ChartPurchaseOrg&apos;,
+        chartType:              #DONUT,
+        dimensions:             [&apos;PurchasingOrganization&apos;],
+        dimensionAttributes:    [{ dimension: &apos;PurchasingOrganization&apos;, role: #CATEGORY }],
+        measures:               [&apos;NumberOfDocuments&apos;],
+        measureAttributes:      [{ measure: &apos;NumberOfDocuments&apos;, role: #AXIS_1 }]
+    }
+]
+annotate view Z_C_PurchaseDocumentALP with
+{
+  @UI: { lineItem: [{ qualifier: &apos;Default&apos;, position: 10}], selectionField: [{ position: 10}], identification: [{ position: 10}]}
+  PurchaseDocument;
+  @UI: { lineItem: [{ qualifier: &apos;Default&apos;, position: 20}], identification: [{ position: 20}]}
+  PurchaseDocumentItem;
+  @UI: { selectionField: [{ position: 20}], lineItem: [{ qualifier: &apos;Default&apos;, position: 30}]}
+  Priority;
+  @UI: { lineItem: [{ qualifier: &apos;Default&apos;, position: 40}]}
+  @UI.dataPoint.title: &apos;Status&apos;
+  @Consumption.filter: { selectionType : #SINGLE, multipleSelections : true}
+  Status;
+  @UI: { selectionField: [{ position: 30}], lineItem: [{ qualifier: &apos;Default&apos;, position: 50}]}
+  Vendor;
+  @UI: { selectionField: [{ position: 40}]}
+  VendorType;
+  @UI: { selectionField: [{ position: 50}]}
+  PurchasingOrganization;
+  @UI: { lineItem: [{ qualifier: &apos;Default&apos;, position: 60}]}
+  @UI.dataPoint.title: &apos;Quantity&apos;
+  Quantity;
+  @UI: { lineItem: [{ qualifier: &apos;Default&apos;, position: 70}], identification: [{ position: 40}]}
+  Price;
+  @UI: { lineItem: [{ qualifier: &apos;Default&apos;, position: 80}], identification: [{ position: 50}]}
+ //Data Point with Criticality Calculation for the KPIs to highlight values based on the threshold limiit
+  @UI: {
+        dataPoint: {
+            title: &apos;Overall Item Price&apos;,
+            valueFormat.numberOfFractionalDigits: 2,
+            minimumValue: 0,
+            maximumValue: 100000,
+            criticalityCalculation: {
+                improvementDirection: #MINIMIZE,
+                toleranceRangeHighValue: 40000,
+                deviationRangeHighValue: 100000
+            }
+          }
+        }
+  OverallItemPrice;
+}</SOURCE>
+    </CONTENT>
+   </DDLX>
+  </asx:values>
+ </asx:abap>
+</abapGit>
